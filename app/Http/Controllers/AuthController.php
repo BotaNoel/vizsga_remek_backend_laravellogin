@@ -20,38 +20,32 @@ class AuthController extends Controller
      */
     public function register(Request $request)
     {
-        // Validáció
         $validator = Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
         if ($validator->fails()) {
             return response()->json([
                 'errors' => $validator->errors(),
-            ], 422); // Válasz a frontend számára a hibákkal
+            ], 422);
         }
 
-        // Új felhasználó létrehozása
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'remember_token' => Str::random(60), // Ha szükséges a "remember me" token
         ]);
 
-        // Regisztráció esemény elindítása
-        // event(new Registered($user));
+        // Token generálás (Sanctum)
+        $token = $user->createToken('auth_token')->plainTextToken;
 
-        // Bejelentkezés a regisztrált felhasználóval
-        Auth::login($user);
-
-        // A felhasználó adatainak visszaküldése
         return response()->json([
             'message' => 'Sikeres regisztráció!',
             'user' => $user,
-        ]);
+            'token' => $token,
+        ], 201);
     }
 
     /**
@@ -62,20 +56,19 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        // Validáció
         $credentials = $request->only('email', 'password');
-        
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
 
-            return response()->json([
-                'message' => 'Sikeres bejelentkezés!',
-                'user' => $user,
-            ]);
+        if (!Auth::attempt($credentials)) {
+            return response()->json(['error' => 'Hibás e-mail cím vagy jelszó'], 401);
         }
 
+        $user = Auth::user();
+        $token = $user->createToken('auth_token')->plainTextToken;
+
         return response()->json([
-            'error' => 'Hibás e-mail cím vagy jelszó',
-        ], 401);
+            'message' => 'Sikeres bejelentkezés!',
+            'user' => $user,
+            'token' => $token,
+        ]);
     }
 }

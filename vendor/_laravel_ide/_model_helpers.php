@@ -10,7 +10,6 @@ namespace App\Models {
      * @property float|null $price_per_night
      * @property string|null $description
      * @property mixed $max_capacity
-     * @property string $type_name
      * @property string $name
      * @property mixed $type_id
      * @property mixed $user_id
@@ -29,7 +28,6 @@ namespace App\Models {
      * @method static \Illuminate\Database\Eloquent\Builder<Apartment>|Apartment whereUserId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Apartment>|Apartment whereTypeId($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Apartment>|Apartment whereName($value)
-     * @method static \Illuminate\Database\Eloquent\Builder<Apartment>|Apartment whereTypeName($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Apartment>|Apartment whereMaxCapacity($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Apartment>|Apartment whereDescription($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Apartment>|Apartment wherePricePerNight($value)
@@ -311,6 +309,7 @@ namespace App\Models {
      * @method static mixed simplePaginator($items, $perPage, $currentPage, $options)
      * @method static mixed cursorPaginator($items, $perPage, $cursor, $options)
      * @method static mixed tap($callback)
+     * @method static mixed pipe($callback)
      * @method static mixed when($value, callable $callback, callable $default)
      * @method static mixed unless($value, callable $callback, callable $default)
      * @method static mixed explain()
@@ -616,6 +615,7 @@ namespace App\Models {
      * @method static mixed simplePaginator($items, $perPage, $currentPage, $options)
      * @method static mixed cursorPaginator($items, $perPage, $cursor, $options)
      * @method static mixed tap($callback)
+     * @method static mixed pipe($callback)
      * @method static mixed when($value, callable $callback, callable $default)
      * @method static mixed unless($value, callable $callback, callable $default)
      * @method static mixed explain()
@@ -930,6 +930,7 @@ namespace App\Models {
      * @method static mixed simplePaginator($items, $perPage, $currentPage, $options)
      * @method static mixed cursorPaginator($items, $perPage, $cursor, $options)
      * @method static mixed tap($callback)
+     * @method static mixed pipe($callback)
      * @method static mixed when($value, callable $callback, callable $default)
      * @method static mixed unless($value, callable $callback, callable $default)
      * @method static mixed explain()
@@ -1254,6 +1255,7 @@ namespace App\Models {
      * @method static mixed simplePaginator($items, $perPage, $currentPage, $options)
      * @method static mixed cursorPaginator($items, $perPage, $cursor, $options)
      * @method static mixed tap($callback)
+     * @method static mixed pipe($callback)
      * @method static mixed when($value, callable $callback, callable $default)
      * @method static mixed unless($value, callable $callback, callable $default)
      * @method static mixed explain()
@@ -1572,6 +1574,7 @@ namespace App\Models {
      * @method static mixed simplePaginator($items, $perPage, $currentPage, $options)
      * @method static mixed cursorPaginator($items, $perPage, $cursor, $options)
      * @method static mixed tap($callback)
+     * @method static mixed pipe($callback)
      * @method static mixed when($value, callable $callback, callable $default)
      * @method static mixed unless($value, callable $callback, callable $default)
      * @method static mixed explain()
@@ -1891,6 +1894,7 @@ namespace App\Models {
      * @method static mixed simplePaginator($items, $perPage, $currentPage, $options)
      * @method static mixed cursorPaginator($items, $perPage, $cursor, $options)
      * @method static mixed tap($callback)
+     * @method static mixed pipe($callback)
      * @method static mixed when($value, callable $callback, callable $default)
      * @method static mixed unless($value, callable $callback, callable $default)
      * @method static mixed explain()
@@ -2199,6 +2203,7 @@ namespace App\Models {
      * @method static mixed simplePaginator($items, $perPage, $currentPage, $options)
      * @method static mixed cursorPaginator($items, $perPage, $cursor, $options)
      * @method static mixed tap($callback)
+     * @method static mixed pipe($callback)
      * @method static mixed when($value, callable $callback, callable $default)
      * @method static mixed unless($value, callable $callback, callable $default)
      * @method static mixed explain()
@@ -2506,6 +2511,7 @@ namespace App\Models {
      * @method static mixed simplePaginator($items, $perPage, $currentPage, $options)
      * @method static mixed cursorPaginator($items, $perPage, $cursor, $options)
      * @method static mixed tap($callback)
+     * @method static mixed pipe($callback)
      * @method static mixed when($value, callable $callback, callable $default)
      * @method static mixed unless($value, callable $callback, callable $default)
      * @method static mixed explain()
@@ -2831,6 +2837,7 @@ namespace App\Models {
      * @method static mixed simplePaginator($items, $perPage, $currentPage, $options)
      * @method static mixed cursorPaginator($items, $perPage, $cursor, $options)
      * @method static mixed tap($callback)
+     * @method static mixed pipe($callback)
      * @method static mixed when($value, callable $callback, callable $default)
      * @method static mixed unless($value, callable $callback, callable $default)
      * @method static mixed explain()
