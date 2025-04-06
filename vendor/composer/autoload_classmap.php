@@ -30,6 +30,7 @@ return array(
     'App\\Models\\Apartment_type' => $baseDir . '/app/Models/Apartment_type.php',
     'App\\Models\\Comment' => $baseDir . '/app/Models/Comment.php',
     'App\\Models\\Filter' => $baseDir . '/app/Models/Filter.php',
+    'App\\Models\\Image' => $baseDir . '/app/Models/Image.php',
     'App\\Models\\Location' => $baseDir . '/app/Models/Location.php',
     'App\\Models\\Order' => $baseDir . '/app/Models/Order.php',
     'App\\Models\\Photo' => $baseDir . '/app/Models/Photo.php',

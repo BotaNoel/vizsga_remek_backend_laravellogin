@@ -54,5 +54,11 @@ class Apartment extends Model
     {
         return $this->hasMany(Order::class);
     }
+
+    public function images()
+    {
+        return $this->morphMany(\App\Models\Image::class, 'imageable');
+    }
+
 }
 

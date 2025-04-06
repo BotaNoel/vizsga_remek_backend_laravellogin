@@ -12,28 +12,35 @@ class ApartmentController extends Controller
     public function store(Request $request)
     {
         try {
-                // Validáció
             $validated = $request->validate([
                 'name' => 'required|string|max:255',
-                'type_id' => 'required|integer|exists:apartment_types,id', // 🔹 Ellenőrizzük az id-t
+                'type_id' => 'required|integer|exists:apartment_types,id',
                 'max_capacity' => 'required|integer|min:1',
                 'description' => 'nullable|string',
                 'price_per_night' => 'required|numeric|min:0',
+                'image' => 'nullable|image|max:2048', // max 2MB
             ]);
 
             $apartment = Apartment::create([
-                'user_id' => Auth::id(),
+                'user_id' => 1, // ideiglenesen fix user_id (mivel authToken-t levettük)
                 'name' => $validated['name'],
-                'type_id' => $validated['type_id'], // Use the type_id directly, not type_name
+                'type_id' => $validated['type_id'],
                 'max_capacity' => $validated['max_capacity'],
                 'description' => $validated['description'] ?? null,
                 'price_per_night' => $validated['price_per_night'],
             ]);
 
+            if ($request->hasFile('image')) {
+                $path = $request->file('image')->store('apartments', 'public');
+                $apartment->images()->create([
+                    'path' => $path,
+                ]);
+            }
+
             return response()->json(['message' => 'Szállás sikeresen létrehozva!', 'apartment' => $apartment], 201);
-        }
-        
-         catch (ValidationException $e) {
+        } catch (ValidationException $e) {
+            return response()->json(['error' => $e->getMessage()], 422);
+        } catch (\Exception $e) {
             return response()->json(['error' => 'Hiba történt a szállás létrehozása során.'], 500);
         }
     }

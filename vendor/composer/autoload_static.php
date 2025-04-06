@@ -550,6 +550,7 @@ class ComposerStaticInit85c1d2065f70e38b0d6bf66559fb13c5
         'App\\Models\\Apartment_type' => __DIR__ . '/../..' . '/app/Models/Apartment_type.php',
         'App\\Models\\Comment' => __DIR__ . '/../..' . '/app/Models/Comment.php',
         'App\\Models\\Filter' => __DIR__ . '/../..' . '/app/Models/Filter.php',
+        'App\\Models\\Image' => __DIR__ . '/../..' . '/app/Models/Image.php',
         'App\\Models\\Location' => __DIR__ . '/../..' . '/app/Models/Location.php',
         'App\\Models\\Order' => __DIR__ . '/../..' . '/app/Models/Order.php',
         'App\\Models\\Photo' => __DIR__ . '/../..' . '/app/Models/Photo.php',
